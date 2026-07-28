@@ -41,11 +41,11 @@ To ensure better classification results:
 
 - The original classifier has been removed for both architectures (include_top=False). 
 
-- This was replaced by my own head: GlobalAveragePooling → Dense(256, relu) → Dropout(0.4) → Dense(128, relu) → Dropout(0.3) → Dense(4, softmax) for the 4 tumor classes.
+- This was replaced by my own: GlobalAveragePooling → Dense(256, relu) → Dropout(0.4) → Dense(128, relu) → Dropout(0.3) → Dense(4, softmax) for the 4 tumor classes.
 
 ### Partial Fine-tuning
 
-Most of the backbone of the models was frozen, keeping the original parameters and saving training time. The final stage was unfrozen so those laters adapt to the specific MRI training images.
+Most of the backbone of the models was frozen, keeping the original parameters and saving training time. The final stage was unfrozen so those layers adapt to the specific MRI training images.
 
 - For EfficientNet, block6 and the top layer were unfrozen.
 
@@ -66,8 +66,11 @@ The given class weights were the following:
 
 ### Augmentation
 
+To potentially increase the classifier's accuracy, I use Keras ImageDataGenerator not to increase the total number of images, but to make changes to the images across epochs, so the classifier "sees" different images per epoch. The main augmentation techniques used are rotation, width shift, height shift, zooming and horizontal flipping. The validation set is left untouched.
+
 ### Learning Rate
 
+A learning rate of 1e-2 was initially set (see transfer_learning_efficientnet_2.ipynb). However, this learning rate appeared to be unstable and provided a low accuracy on the test set, 0.595. As a result, in the next experiments, I decided to reduce the learning rate to 1e-4, providing better classification results and an accuracy on the test set that jumped to 0.695 allthings equal. 
 
 ## Interpretability: SHAP
 
