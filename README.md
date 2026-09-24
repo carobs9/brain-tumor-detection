@@ -4,6 +4,30 @@
 
 The dataset used for training the models can be found in this GitHub repository: https://github.com/sartajbhuvaji/brain-tumor-classification-dataset.
 
+### Downloading the data
+
+The download script stores the dataset in `data/raw` by default:
+
+```bash
+.venv/bin/python src/fetch_data.py
+```
+
+To choose another location, pass `--output-dir` or set `BRAIN_TUMOR_DATA_DIR`:
+
+```bash
+.venv/bin/python src/fetch_data.py --output-dir /path/to/brain-tumor-data
+BRAIN_TUMOR_DATA_DIR=/path/to/brain-tumor-data .venv/bin/python src/fetch_data.py
+```
+
+The repository-root `.env` file is loaded automatically by the download script
+and notebooks. It defines `DATA_ROOT`, `TRAINING_DATA_DIR`, and
+`TESTING_DATA_DIR`. If the data is stored elsewhere, update those values in
+`.env` or set `BRAIN_TUMOR_DATA_DIR` before starting the Jupyter kernel:
+
+```bash
+export BRAIN_TUMOR_DATA_DIR=/path/to/brain-tumor-data
+```
+
 The data contains training and testing MRI images with size 256x256x3.
 
 The data is already split into training (2.870 images, 80%) and testing (394 images, 20%) with the following distribution:
