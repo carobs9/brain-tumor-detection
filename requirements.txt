@@ -1,0 +1,24 @@
+# Core numerical and image-processing dependencies
+numpy==1.26.4
+pandas==3.0.0
+matplotlib==3.10.8
+opencv-python==4.11.0.86
+scikit-learn==1.6.1
+
+# TensorFlow and Keras
+tensorflow==2.19.0
+tensorflow-metal==1.2.0; platform_system == "Darwin" and platform_machine == "arm64"
+protobuf==5.29.6
+googleapis-common-protos==1.66.0
+
+# Experiment tracking and model explainability
+wandb==0.30.0
+shap==0.47.1
+
+# Notebook execution
+jupyter==1.0.0
+ipykernel==6.29.5
+python-dotenv==1.1.0
+
+# Kaggle
+kagglehub
